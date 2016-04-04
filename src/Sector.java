@@ -1,4 +1,4 @@
-class Sector {
+class Sector extends Graph {
 		private double radius = 0;
 		private double angle = 0;
 		
@@ -11,14 +11,19 @@ class Sector {
 			angle = a;
 		}
 		
+		void ParaInfo(){
+			System.out.println("The radius of this sector is "+ radius 
+					+ " and the angle is "+angle);
+		};
+		
 		//calculate perimeter of sector
-		double Perimeter(Sector s){
-			return (float)(3.14*s.radius*s.radius*s.angle/360);
+		double Perimeter(){
+			return (float)(3.14*radius*radius*angle/360);
 		}
 		
 		//calculate square of sector
-		double Square(Sector s){
-			return (float)(3.14*s.radius*2*s.angle/360+2*s.radius);
+		double Square(){
+			return (float)(3.14*radius*2*angle/360+2*radius);
 		}
 		
 		double getRadius(){ return radius;}

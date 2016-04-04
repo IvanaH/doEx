@@ -1,4 +1,4 @@
-class Rectangle {
+class Rectangle extends Graph{
 	private double width = 0;
 	private double length = 0;
 	
@@ -7,14 +7,19 @@ class Rectangle {
 		length = l;
 	}
 	
+	void ParaInfo(){
+		System.out.println("The width of this retangle is "+ width 
+				+ " and the length is "+length);
+	};
+	
 	//calculate perimeter of sector
-	double Perimeter(Rectangle r){
-		return (float)((r.length+r.width)*2);
+	double Perimeter(){
+		return (float)((length+width)*2);
 	}
 	
 	//calculate square of sector
-	double Square(Rectangle r){
-		return (float)(r.length*r.width);
+	double Square(){
+		return (float)(length*width);
 	}
 	
 	double getLength(){ return length;}

@@ -2,10 +2,11 @@ import java.util.Scanner;
 
 public class PeriAndSq{
 	public static void main(String args[]) throws java.io.IOException{
-		char choice,ignore;
+		int choice,ignore;
 		int times;
 		int i = 0;
-		double m[]={0,0,0};
+		
+		double m[] = {0,0,0};
 		
 		Scanner s = new Scanner(System.in); 
 		
@@ -33,7 +34,7 @@ public class PeriAndSq{
 				i++;
 			}while((i<times)&&s.hasNextDouble());
 		    
-		    c.CreateGraph(choice, m[0], m[1], m[2]);
+		    c.CreateGraph(choice,m[0],m[1],m[2]);
 		}
 		
 		s.close();

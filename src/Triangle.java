@@ -1,4 +1,4 @@
-class Triangle{
+class Triangle extends Graph{
 	private double side1 = 0;
 	private double side2 = 0;
 	private double side3 = 0;
@@ -13,15 +13,20 @@ class Triangle{
 		side3 = s3;
 	}
 	
+	void ParaInfo(){
+		System.out.println("The sides of this triangle is "+ side1 + ", "
+				+ side2 + ", "+side3);
+	};
+	
 	//calculate perimeter of triangle
-	double Perimeter(Triangle t){
-		return (float)(t.side1+t.side1+t.side3);
+	double Perimeter(){
+		return (float)(side1+side2+side3);
 	}
 	
 	//calculate square of triangle
-	double Square(Triangle t){
-		double p = (t.side1+t.side2+t.side3)/2;
-		return (float)(Math.sqrt(p*(p-t.side1)*(p-t.side2)*(p-t.side3)));
+	double Square(){
+		double p = (side1+side2+side3)/2;
+		return (float)(Math.sqrt(p*(p-side1)*(p-side2)*(p-side3)));
 	}
 	
 	double getSide1(){ return side1;}

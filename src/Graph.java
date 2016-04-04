@@ -1,4 +1,5 @@
 abstract class Graph {
-	abstract double Perimeter(Graph g);
-	abstract double Square(Graph g);
+	abstract void ParaInfo();
+	abstract double Perimeter();
+	abstract double Square();
 }

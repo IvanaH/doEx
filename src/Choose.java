@@ -10,8 +10,11 @@ class Choose{
 	}
 	
 	boolean isVaild(int ch){
-		if(ch < '1' | ch > '5' & ch!= 'q')
+		if(ch < '1' | ch > '5' & ch!= 'q'){
+			System.out.println("The choice is not legal.");
+			System.out.println();
 			return false;
+		}
 		else
 			return true;
 	}
@@ -38,37 +41,30 @@ class Choose{
 	}
 	
 	void CreateGraph(int what, double m, double n, double p){
+		Graph gra = new Circle(0);
+		
 		switch(what){
 		case '1' :
-			Circle ob1 = new Circle(m);
-			System.out.println( "The perimeter is "+ob1.Perimeter(ob1));
-			System.out.println( "The square is "+ob1.Square(ob1));
-			System.out.println();
+			gra = new Circle(m);
 			break;
 		case '2' :
-			Sector ob2 = new Sector(m,n);
-			System.out.println( "The perimeter is "+ob2.Perimeter(ob2));
-			System.out.println( "The square is "+ob2.Square(ob2));
-			System.out.println();
+			gra = new Sector(m,n);
 			break;
 		case '3' :
-			Triangle ob3 = new Triangle(m,n,p);
-			System.out.println( "The perimeter is "+ob3.Perimeter(ob3));
-			System.out.println( "The square is "+ob3.Square(ob3));
-			System.out.println();
+			gra = new Triangle(m,n,p);
 			break;
 		case '4' :
-			Rectangle ob4 = new Rectangle(m,n);
-			System.out.println( "The perimeter is "+ob4.Perimeter(ob4));
-			System.out.println( "The square is "+ob4.Square(ob4));
-			System.out.println();
+			gra = new Rectangle(m,n);
 			break;
 		case '5' :
-			Sq ob5 = new Sq(m);
-			System.out.println( "The perimeter is "+ob5.Perimeter(ob5));
-			System.out.println( "The square is "+ob5.Square(ob5));
-			System.out.println();
+			gra = new Sq(m);
 			break;
-		}		
+		}
+		String GraphTy[] = {"Circle","Sector","Triangle","Retangle","Square" };  // char-int, to void out-of-bound
+		
+		gra.ParaInfo();
+		System.out.println("The perimeter of this "+ GraphTy[what-49]+" is:" + gra.Perimeter());	
+		System.out.println("The square of this "+ GraphTy[what-49]+" is:" + gra.Square());
+		System.out.println();
 	}
 }
