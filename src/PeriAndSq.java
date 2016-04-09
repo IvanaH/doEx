@@ -1,21 +1,11 @@
-import java.util.Scanner;
-
 public class PeriAndSq{
 	public static void main(String args[]) throws java.io.IOException{
 		int choice,ignore;
-		int times;
-		int i = 0;
-		
-		double m[] = {0,0,0};
-		
-		Scanner s = new Scanner(System.in); 
-		
+				
 		Choose c = new Choose();
 		
 		for(;;){
-			do{
-				i = 0;
-				
+			do{				
 				c.Info();
 			
 			    choice = (char) System.in.read();
@@ -26,18 +16,11 @@ public class PeriAndSq{
 			}while( !c.isVaild(choice));
 			
 			if(choice == 'q') break;
-						
-			times = c.graphInfo(choice);
 			
-			do{
-				m[i] = s.nextDouble();
-				i++;
-			}while((i<times)&&s.hasNextDouble());
-		    
-		    c.CreateGraph(choice,m[0],m[1],m[2]);
+			//To-do
+		    // generate graph according to choice
+		c.CreateGraph(choice);
 		}
-		
-		s.close();
 	}
 }
 

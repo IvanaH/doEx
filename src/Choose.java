@@ -19,52 +19,32 @@ class Choose{
 			return true;
 	}
 	
-	int graphInfo(int what){		
-		switch(what){
-		case '1' :
-			System.out.print("Please input the radius of circle: ");
-			return 1;
-		case '2' :
-			System.out.println("Please input the radius and angle of the sector, and using ENTER sperating values: ");
-			return 2;
-		case '3' :
-			System.out.println("Please input the sides of the triangle, and using ENTER sperating values: ");
-			return 3;
-		case '4' :
-			System.out.println("Please input the length and width of the retangle, and using ENTER sperating values:");
-			return 2;
-		case '5' :
-			System.out.println("Please input the length of side of the square, and using ENTER sperating values: ");
-			return 1;
-		}
-		return 0;
-	}
 	
-	void CreateGraph(int what, double m, double n, double p){
-		Graph gra = new Circle(0);
+	void CreateGraph(int what){
+		
+		Graph gra = null;
 		
 		switch(what){
 		case '1' :
-			gra = new Circle(m);
+			gra = new Circle();
 			break;
 		case '2' :
-			gra = new Sector(m,n);
+			gra = new Sector();
 			break;
 		case '3' :
-			gra = new Triangle(m,n,p);
+			gra = new Triangle();
 			break;
 		case '4' :
-			gra = new Rectangle(m,n);
+			gra = new Rectangle();
 			break;
 		case '5' :
-			gra = new Sq(m);
+			gra = new Sq();
 			break;
 		}
-		String GraphTy[] = {"Circle","Sector","Triangle","Retangle","Square" };  // char-int, to void out-of-bound
-		
+	
 		gra.ParaInfo();
-		System.out.println("The perimeter of this "+ GraphTy[what-49]+" is:" + gra.Perimeter());	
-		System.out.println("The square of this "+ GraphTy[what-49]+" is:" + gra.Square());
+		System.out.println("The perimeter is:" + gra.Perimeter());	
+		System.out.println("The square is:" + gra.Square());
 		System.out.println();
 	}
 }
