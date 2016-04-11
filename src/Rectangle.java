@@ -1,29 +1,39 @@
 class Rectangle extends Graph{
+	protected String[] paraL = {"width","length"};
+
 	protected double width = 0;
 	protected double length = 0;
 	protected boolean v;
-	protected double p[];
 
 	Rectangle(){
-		System.out.println("Please input the length and width of the retangle, and using ENTER sperating values:");
-		p = SetPara(2);
+		ParaNeed(1);
+		width = SetPara(1);
+
+		ParaNeed(2);
+		length = SetPara(2);
 	
-		if((p[0]<0)|(p[1]<0)){
+		if((width<0)|(length<0)){
 			System.out.println("-- Both length and width need to be greater than zero.");
 			v = false;
 			return;
 		}
-		
-		length = p[0];
-		width = p[1];
+		else{
+			length = 0;
+			width = 0;			
+		}
 	}
 	
 	void ParaInfo(){
-		if(!v){
+		if(v){
 			System.out.println("The width of this retangle is "+ width 
 				               + " and the length is "+length);
 		}
-	};
+	}
+	
+	Rectangle(int i){
+		length = 0;
+		width = 0;
+	}
 	
 	//calculate perimeter of sector
 	double Perimeter(){

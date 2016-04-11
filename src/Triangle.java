@@ -1,4 +1,6 @@
 class Triangle extends Graph{
+	protected String[] paraL = {"side1","side2","side3"};
+
 	private double side1 = 0;
 	private double side2 = 0;
 	private double side3 = 0;
@@ -15,13 +17,15 @@ class Triangle extends Graph{
 			v = false;
 			return;
 		}
-		side1 = p[0];
-		side2 = p[1];
-		side3 = p[2];
+		else{
+			side1 = p[0];
+			side2 = p[1];
+			side3 = p[2];
+		}		
 	}
 	
 	void ParaInfo(){
-		if(!v){
+		if(v){
 			System.out.println("The sides of this triangle is "+ side1 + ", "
 					+ side2 + ", "+side3);
 		}

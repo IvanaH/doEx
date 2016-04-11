@@ -1,25 +1,26 @@
 class Circle extends Graph{
+	protected String[] paraL = {"radius"};
+	
 	private double radius = 0;
+	private double m;
 	private boolean v;
-	private double p[];
 
 	Circle(){
-		System.out.print("Please input the radius of circle: ");
-		
-		p = SetPara(1);
+		ParaNeed(1);
+		radius = SetPara(1);
 
-		if(p[0]<0){
+		if(m <0){
 			System.out.println("-- The radius need to be POSITIVE.");
+			radius = 0;
 			v = false;
 		}
-		radius = p[0];
 	}
 	
 	void ParaInfo(){
-		if(!v){
+		if(v){
 			System.out.println("The radius of this circle is "+ radius);
 		}
-	};
+	}
 	
 	//calculate perimeter of circle
 	double Perimeter(){
@@ -34,3 +35,4 @@ class Circle extends Graph{
 	double getRadius(){ return radius;}
 	void setRadius(double r){ radius = r;}
 }
+
