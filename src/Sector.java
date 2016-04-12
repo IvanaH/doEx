@@ -1,29 +1,26 @@
 class Sector extends Circle {
-	protected String[] paraL = {"radius","angle"};
+	private String[] pNL = {"radius","angle"};
 	
 	private double radius = 0;
 	private double angle = 0;
-	
-	private boolean v;
-				
+					
 	Sector(){	
-		ParaNeed(2);
-		angle = SetPara(2);
+		paraNL = pNL;
+		
+		ParaNeed(1);
+		setAngle(SetPara());
 
-		if((angle<0)|(angle>360)){
-			System.out.println("-- The angle of sector is illegal. ");
-			v = false;
-			angle = 0;
-			return;
+		while(angle>360){
+			System.out.println("-- The angle of sector is illegal, please enter angain:  ");
+			
+			angle = SetPara();
 		}
 	}
 		
 		
 	void ParaInfo(){
-		if(v){
-			System.out.println("The radius of this sector is "+ radius 
-					+ " and the angle is "+angle);
-		}
+		System.out.println("The radius of this sector is "+ radius 
+				+ " and the angle is "+angle);
 	};
 		
 	//calculate perimeter of sector

@@ -1,35 +1,47 @@
 class Triangle extends Graph{
-	protected String[] paraL = {"side1","side2","side3"};
+	protected String[] pNL = {"side1","side2","side3"};
 
 	private double side1 = 0;
 	private double side2 = 0;
 	private double side3 = 0;
-	private double p[];
 	private boolean v;
 
 	Triangle(){
-		System.out.println("Please input the sides of the triangle, and using ENTER sperating values: ");
-		p = SetPara(3);
+		paraNL = pNL;
+		
+		ParaNeed(0);
+		setSide1 (SetPara());
 
-		if((p[0]<0)|(p[1]<0)|(p[2]<0)|
-			(p[0]+p[1]<p[2])|(p[0]+p[2]<p[1])|(p[2]+p[1]<p[0])){
-			System.out.println("--"+ p[0] + ", "+ p[1] +", "+ p[2] +" can not construct a triangle.");
+		ParaNeed(1);
+		setSide2 (SetPara());
+		
+		ParaNeed(2);
+		setSide3 (SetPara());
+		
+		if((side1+side2<side3)|(side1+side3<side2)|(side3+side2<side1)){
+			System.out.println("--"+ side1 + ", "+ side2 +", "+ side3 +" can not construct a triangle.");
 			v = false;
-			return;
 		}
-		else{
-			side1 = p[0];
-			side2 = p[1];
-			side3 = p[2];
-		}		
+
+//		do{
+//			ParaNeed(0);
+//			side1 = SetPara();
+//			ParaNeed(1);
+//			side2 = SetPara();
+//			ParaNeed(2);
+//			side3 = SetPara();
+//			
+//			if((side1+side2<side3)|(side1+side3<side2)|(side3+side2<side1))
+//				System.out.println("--"+ side1 + ", "+ side2 +", "+ side3 +" can not construct a triangle.");//			
+//		}while ((side1+side2<side3)|(side1+side3<side2)|(side3+side2<side1));
 	}
 	
 	void ParaInfo(){
 		if(v){
-			System.out.println("The sides of this triangle is "+ side1 + ", "
-					+ side2 + ", "+side3);
-		}
-	};
+			System.out.println("The sides of this triangle is "+ getSide1() + ", "
+					+ getSide2() + ", "+getSide3());
+		}				
+	}
 	
 	//calculate perimeter of triangle
 	double Perimeter(){

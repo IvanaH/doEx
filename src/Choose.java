@@ -6,11 +6,12 @@ class Choose{
 		System.out.println("3. Triangle");
 		System.out.println("4. Retangle");
 		System.out.println("5. Square");
+		System.out.println("6. Right-angle Trapezoid");
 		System.out.print("Choose one (q to quit):");
 	}
 	
 	boolean isVaild(int ch){
-		if(ch < '1' | ch > '5' & ch!= 'q'){
+		if(ch < '1' | ch > '6' & ch!= 'q'){
 			System.out.println("The choice is not legal.");
 			System.out.println();
 			return false;
@@ -58,6 +59,9 @@ class Choose{
 			break;
 		case '5' :
 			gra = new Sq();
+			break;
+		case '6' :
+			gra = new RTrapezoid();
 			break;
 		}	
 		
