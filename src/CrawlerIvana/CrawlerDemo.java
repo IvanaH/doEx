@@ -14,7 +14,9 @@ class CrawlerDemo {
 		}
 		
 				
-		setRules sr = new setRules(gs.sLink(),gs.rType());
+//		setRules sr = new setRules(gs.sLink(),gs.rType());
+		
+		getResult gr = new getResult();
 		
 		
 	}
