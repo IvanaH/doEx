@@ -18,7 +18,9 @@ class CrawlerDemo {
 		
 		getResult gr = new getResult();
 		
+		gr.getResponce(gs.sLink(),gs.rType());
 		
+		System.out.println("Hi");
 	}
 
 }
