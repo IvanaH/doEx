@@ -2,6 +2,8 @@ package CrawlerIvana;
 
 class CrawlerDemo {
 	public static void main(String args[]){
+		String Resultf = "D:\\JavaL\\WorkSpace\\Practice\\src\\CrawlerIvana\\CResult.txt";
+		String RFile = "D:\\JavaL\\WorkSpace\\Practice\\src\\CrawlerIvana\\Result.txt";
 		
 		//get source link and request type from parameter or console
 		getSource gs = new getSource();
@@ -18,7 +20,11 @@ class CrawlerDemo {
 		
 		getResult gr = new getResult();
 		
-		gr.getResponce(gs.sLink(),gs.rType());
+		gr.getResponce(gs.sLink(),gs.rType(),RFile);
+		
+		gr.setKey();
+		
+		gr.CrawlerR(RFile, Resultf, gr.getKey());
 		
 		System.out.println("Hi");
 	}
