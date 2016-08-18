@@ -13,6 +13,7 @@ class CrawlerDemo {
 		else{
 			gs.getType();
 			gs.getLink();
+			gs.setKey();
 		}
 		
 				
@@ -22,9 +23,7 @@ class CrawlerDemo {
 		
 		gr.getResponce(gs.sLink(),gs.rType(),RFile);
 		
-		gr.setKey();
-		
-		gr.CrawlerR(RFile, Resultf, gr.getKey());
+		gr.CrawlerR(RFile, Resultf, gs.getKey());
 		
 		System.out.println("Hi");
 	}

@@ -4,27 +4,11 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
-//import java.util.regex.Matcher;
-//import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
-class getResult {
-	private String k = null;
-	
-	void setKey(){
-		Scanner s = new Scanner(System.in);
-		
-		System.out.println("Please enter the key word");
-		k = s.next();
-		
-		if(!s.hasNextLine())
-			s.close();
-	}
-	
-	String getKey(){
-		return k;
-	}
-	
+class getResult {	
 	void getResponce(String sLink, char sType, String RFile){
 		BufferedReader rd = null;
 		FileWriter fw = null;
@@ -34,10 +18,10 @@ class getResult {
 			
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			
-			if(sType == 'g')
-				con.setRequestMethod("GET");
-			else
-				con.setRequestMethod("POST");
+//			if(sType == 'g')
+//				con.setRequestMethod("GET");
+//			else
+//				con.setRequestMethod("POST");
 			
 			con.setReadTimeout(20*1000);
 			con.connect();
@@ -55,10 +39,9 @@ class getResult {
 			String line = null;
 	    	line = rd.readLine();
 			
-//			fw.append(line+"\r\n");
 		    while (line != null){
-//		    	fw.append(line+"\r\n");
-		    	fw.write(line+"\r\n");
+		    	fw.append(line+"\r\n");
+//		    	fw.write(line+"\r\n");
 		    	
 		    	line = rd.readLine();
 		    }		

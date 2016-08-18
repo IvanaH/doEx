@@ -7,6 +7,7 @@ class getSource {
 	
 	protected String l = null;  //source link of crawler
 	protected char ty = 'e'; //request type of link
+	private String k = null; //the keyword which want to get from the source
 	
 	String sLink(){
 		return l;
@@ -69,12 +70,33 @@ class getSource {
 				ty = 'p';
 			else if(str.compareToIgnoreCase("get") == 0)
 				ty = 'g';
-			else
-				ty = 'e';
 		}while(ty == 'e');
 		
 
 		if(!s.hasNextLine())
 			s.close();
+	}
+	
+	
+	void setKey(){
+		Scanner s = new Scanner(System.in);
+		String ch = null;
+		
+		do{
+			System.out.println("Please enter the key word");
+			k = s.next();
+			
+			System.out.println("The keyword for search is" + k);
+			System.out.println("Do you sure (Yes/No)?");
+			
+			ch = s.next();
+		}while(ch.equalsIgnoreCase("No"));
+		
+		if(!s.hasNextLine())
+			s.close();
+	}
+	
+	String getKey(){
+		return k;
 	}
 }
