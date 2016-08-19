@@ -86,7 +86,7 @@ class getSource {
 			System.out.println("Please enter the key word");
 			k = s.next();
 			
-			System.out.println("The keyword for search is" + k);
+			System.out.println("The keyword for search is " + k);
 			System.out.println("Do you sure (Yes/No)?");
 			
 			ch = s.next();

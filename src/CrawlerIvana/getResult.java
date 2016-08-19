@@ -56,19 +56,37 @@ class getResult {
 	void CrawlerR(String RFile, String Resultf, String key){
 		try(BufferedReader br = new BufferedReader (new InputStreamReader (new FileInputStream(RFile),"UTF-8"));
 				FileWriter fw = new FileWriter(Resultf)){
-			
-			  String sstr = br.readLine();
-			  String rstr = null;
-			  int indx;
+//			BufferedWriter fw = new BufferedWriter(new OutputStreamWriter(
+//					    new FileOutputStream(Resultf), "UTF-8")) ){
+			  String sstr = br.readLine();			  
+		      int i=0;
+//			  String rstr = null;
+//			  int indx;
+//			  
+//			  while( (indx = sstr.indexOf(key)) > 0){
+//				  sstr.substring(indx);
+//				  indx = sstr.indexOf("href=");
+//				  rstr = sstr.substring(indx+5, indx+19);
+//				  sstr = sstr.substring(indx);
+//				  
+//				  fw.append(rstr);
+//				  indx = 0;
+//			  }
+
+			  String reg = "title\">(.*?)(</span>.*?)href=\"(.*?)(\") ";
+			  Pattern P = Pattern.compile(reg);
+			  Matcher m = P.matcher(sstr);
 			  
-			  while( (indx = sstr.indexOf(key)) > 0){
-				  sstr.substring(indx);
-				  indx = sstr.indexOf("href=");
-				  rstr = sstr.substring(indx+5, indx+19);
-				  sstr = sstr.substring(indx);
-				  
-				  fw.append(rstr);
-				  indx = 0;
+			  while(m.find()){
+				  i++;
+				  System.out.print("Find "+i + ": ");
+				  if(m.group(1).contains(key)){
+					  System.out.println("Match! ");
+					  fw.append(m.group(1));
+				      fw.append("http://daily.zhihu.com"+m.group(3)+"\r\n");
+				  }
+				  else
+					  System.out.println("Not match. ");
 			  }
 			
 		}catch(IOException exc){
