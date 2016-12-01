@@ -58,7 +58,9 @@ class getResult {
 				FileWriter fw = new FileWriter(Resultf)){
 //			BufferedWriter fw = new BufferedWriter(new OutputStreamWriter(
 //					    new FileOutputStream(Resultf), "UTF-8")) ){
-			  String sstr = br.readLine();			  
+//			  String sstr = br.readLine();
+			  String sstr = "율율율율율";
+			  System.out.println(sstr);
 		      int i=0;
 //			  String rstr = null;
 //			  int indx;
@@ -82,8 +84,9 @@ class getResult {
 				  System.out.print("Find "+i + ": ");
 				  if(m.group(1).contains(key)){
 					  System.out.println("Match! ");
+//					  System.out.println(m.group(1));
 					  fw.append(m.group(1));
-				      fw.append("http://daily.zhihu.com"+m.group(3)+"\r\n");
+				      fw.append(": "+"http://daily.zhihu.com"+m.group(3)+"\r\n");
 				  }
 				  else
 					  System.out.println("Not match. ");

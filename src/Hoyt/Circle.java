@@ -1,3 +1,5 @@
+package Hoyt;
+
 import java.util.Scanner;
 
 /**
