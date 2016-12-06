@@ -11,9 +11,11 @@ import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.sql.Connection;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.activation.DataSource;
 import javax.lang.model.util.Elements;
 import javax.swing.text.Document;
 import javax.xml.ws.Response;
@@ -53,30 +55,28 @@ class ExtractService {
 			BufferedReader rd = null;
 		
 			rd = new BufferedReader(new InputStreamReader(con.getInputStream(),"UTF-8"),1 * 1024 * 1024);
+			
 			String html = "";
 			String line = rd.readLine();
+			int i = 1;
 			
 		    while (line != null){
 		    	html = html + line;
 		    }
 		    
 		    //process output of the link
-		    String reg = "<h1 class=\"headline-title\">(.*?)<h1>";
+		    String reg = "<a.*href=/"(.+?)/" data-id=/".*/">(.+?)</a>";
 			Pattern P = Pattern.compile(reg);
 			Matcher m = P.matcher(html);
 			  
-			  while(m.find()){
-				  i++;
-				  System.out.print("Find "+i + ": ");
-				  if(m.group(1).contains(key)){
-					  System.out.println("Match! ");
-//					  System.out.println(m.group(1));
-					  fw.append(m.group(1));
-				      fw.append(": "+"http://daily.zhihu.com"+m.group(3)+"\r\n");
+			while(m.find()){
+			  if(m.group(2).contains(values[0])){
+				  String s = "http://daily.zhihu.com"+m.group(1);
+				  data.setId(i);
+				  data.setLinkHref(s);
+				  data.setLinkTitle(m.group(2));
 				  }
-				  else
-					  System.out.println("Not match. ");
-			  }
+			}
 
 		}catch (IOException e){
 			e.printStackTrace();

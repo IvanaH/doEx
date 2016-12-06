@@ -1,17 +1,17 @@
 package sCrawler;
 
 class Rule {
-	//链接
+	//source link
 	private String url;
 	
-	//参数集合
+	//params used to filter the result
 	private String[] params;
 	private String[] values;
 	
-	//针对第一次返回结果，过滤标签
+	//filter tag for the first return
 	private String resultTagName;
 	
-	//请求类型,GET=0, POST=1，默认GET
+	//requestType, GET=0, POST=1，default is GET
 	private int requestType = 0;
 	
 	public Rule() {
