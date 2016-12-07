@@ -18,7 +18,7 @@ class Rule {
 	}
 	
 	public Rule(String url, String[] params,String[] values, String resultTagName, int requestType ){
-		super();
+//		super();
 		this.url = url;
 		this.params = params;
 		this.values = values;
@@ -64,7 +64,6 @@ class Rule {
 	
 	public void setRequestType(int requestType) {
 		this.requestType = requestType;
-	}
-	
+	}	
 
 }

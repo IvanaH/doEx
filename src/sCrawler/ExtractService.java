@@ -1,35 +1,28 @@
 package sCrawler;
 
 import java.io.BufferedReader;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.FileWriter;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
-import java.sql.Connection;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.activation.DataSource;
-import javax.lang.model.util.Elements;
-import javax.swing.text.Document;
-import javax.xml.ws.Response;
-
-import org.omg.CORBA.portable.ResponseHandler;
-
 
 class ExtractService {
-	public LinkData extract(Rule rule){
-		validateRule(rule);
-		
-		LinkData data = null;
-		
+	public ArrayList<LinkData> extract(Rule rule){
+		ArrayList<LinkData> links = new ArrayList<LinkData>();
+
 		try{
+			
+			validateRule(rule);
+			
+//			LinkData data = new LinkData();
+			
+			LinkData data = null;
+			
 //			//HttpClient
 //			URI u = new URI(rule.getUrl());
 //			DefaultHttpClient httpclient = new DefaultHttpClient();
@@ -41,10 +34,10 @@ class ExtractService {
 			
 			//analyzing rule
 			URL url2 = new URL(rule.getUrl());
-			String[] params = rule.getParams();
+//			String[] params = rule.getParams();
 			String[] values = rule.getValues();
-			String resultTagName = rule.getResultTagName();
-			int requestType = rule.getRequestType();
+//			String resultTagName = rule.getResultTagName();
+//			int requestType = rule.getRequestType();
 			
 			URLConnection con =  url2.openConnection();
 			
@@ -57,32 +50,55 @@ class ExtractService {
 			rd = new BufferedReader(new InputStreamReader(con.getInputStream(),"UTF-8"),1 * 1024 * 1024);
 			
 			String html = "";
-			String line = rd.readLine();
-			int i = 1;
+			String line = null;
 			
-		    while (line != null){
+		    while ((line = rd.readLine()) != null){
 		    	html = html + line;
 		    }
+		    System.out.print(html);
+		    System.out.println();
 		    
 		    //process output of the link
-		    String reg = "<a.*href=/"(.+?)/" data-id=/".*/">(.+?)</a>";
+		    String reg = "<a class=\"question_link\" href=\"(.+?)\" data-id=\".+?\">(.+?)</a>";
 			Pattern P = Pattern.compile(reg);
 			Matcher m = P.matcher(html);
 			  
 			while(m.find()){
-			  if(m.group(2).contains(values[0])){
-				  String s = "http://daily.zhihu.com"+m.group(1);
-				  data.setId(i);
-				  data.setLinkHref(s);
-				  data.setLinkTitle(m.group(2));
-				  }
-			}
+//				System.out.println(m.group(0));
+				data = new LinkData();  //why can't new it out of while
+				
+				if(m.group(2).contains(values[0])){
+					  data.setId(links.size()+1);
+					  data.setLinkHref("http://daily.zhihu.com"+m.group(1));
+					  data.setLinkTitle(m.group(2));
+					  System.out.println(m.group(2));
 
+					  links.add(data);
+					  
+					  for(int i=0;i<links.size();i++)
+							System.out.println(links.get(i).getLinkTitle());
+					  System.out.println();
+				}
+				
+			}
+			if(links.size() == 0)
+				System.out.println("Not found matches");
+			
 		}catch (IOException e){
 			e.printStackTrace();
 		}
-				
-		return data;
+		
+//		for(LinkData link:links)
+//			System.out.println(link.getLinkTitle());
+	
+//		for(int i=0;i<links.size();i++)
+//			System.out.println(links.get(i).getLinkTitle());
+//		
+//		System.out.println(links.get(0).getLinkTitle());
+//		System.out.println(links.get(1).getLinkTitle());
+
+		
+		return links;
 	}
 	
 	//verify url and its parameters
