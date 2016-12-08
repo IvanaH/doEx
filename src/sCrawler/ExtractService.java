@@ -46,8 +46,9 @@ class ExtractService {
 			
 			//read the output
 			BufferedReader rd = null;
-		
-			rd = new BufferedReader(new InputStreamReader(con.getInputStream(),"UTF-8"),1 * 1024 * 1024);
+			
+			//TODO catch error from http links 	
+			rd = new BufferedReader(new InputStreamReader(con.getInputStream(),"UTF-8"),1 * 1024 * 1024); 
 			
 			String html = "";
 			String line = null;
@@ -69,15 +70,14 @@ class ExtractService {
 				
 				if(m.group(2).contains(values[0])){
 					  data.setId(links.size()+1);
-					  data.setLinkHref("http://daily.zhihu.com"+m.group(1));
+					  data.setLinkHref("https://www.zhihu.com"+m.group(1));
 					  data.setLinkTitle(m.group(2));
-					  System.out.println(m.group(2));
 
 					  links.add(data);
 					  
-					  for(int i=0;i<links.size();i++)
-							System.out.println(links.get(i).getLinkTitle());
-					  System.out.println();
+//					  for(int i=0;i<links.size();i++)
+//							System.out.println(links.get(i).getLinkTitle());
+//					  System.out.println();
 				}
 				
 			}
