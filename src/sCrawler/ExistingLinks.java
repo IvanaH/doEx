@@ -18,16 +18,31 @@ class ExistingLinks {
 				String line = null;
 				
 				while ((line = br.readLine())!=null) {
-					s = s+line;					
+					s = s+line+"\n";					
 				}
 				
-				String regex = "(http[s]://.*)@{1}";
-				Pattern p = Pattern.compile(regex);
+//				String s = br.readLine();
+				System.out.println(s);
+				
+				String regex = "https?:\\/\\/.+";
+				Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
 				Matcher m = p.matcher(s);
 				
 				while(m.find())
 //					System.out.println(m.group());
-					existingLinks.add(m.group(1));
+					existingLinks.add(m.group());
+				
+//				String line = null;
+//
+//				String regex = "https?:\\/\\/.+";
+//				Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+//				
+//				while ((line = br.readLine())!=null) {
+//					Matcher m = p.matcher(line);
+//					if(m.find())
+//						existingLinks.add(m.group());
+//				}
+				
 				
 			}catch (IOException exc) {
 				System.out.println(exc);

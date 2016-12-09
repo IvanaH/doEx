@@ -30,7 +30,7 @@ class WriteService {
 					else{
 						//write data to the RFile
 					 fw.append((existingLinks.size()+i+1)+": "+datas.get(i).getLinkTitle()+"\r\n");
-					 fw.append(datas.get(i).getLinkHref()+"@"+"\r\n");
+					 fw.append(datas.get(i).getLinkHref()+"\r\n");
 					}
 				}			
 			}catch (IOException exc) {
@@ -40,3 +40,5 @@ class WriteService {
 		}
 	}
 }
+
+
