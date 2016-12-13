@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.xml.ws.http.HTTPException;
+
 
 class ExtractService {
 	public ArrayList<LinkData> extract(Rule rule){
@@ -85,6 +87,8 @@ class ExtractService {
 				System.out.println("Not found matches");
 			
 		}catch (IOException e){
+			e.printStackTrace();
+		}catch (HTTPException e) {
 			e.printStackTrace();
 		}
 		

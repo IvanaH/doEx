@@ -7,9 +7,9 @@ class Demo{
 		String RFile = "D:\\JavaL\\WorkSpace\\Practice\\src\\sCrawler\\1.txt";
 
 		String[] p = {"a"};
-		String[] v = {"奋"};
+		String[] v = {"评价"};
 		
-		Rule r = new Rule("https://www.zhihu.com/question/27062686", p, v , "", 0);
+		Rule r = new Rule("https://www.zhihu.com/question/27092886", p, v , "", 0);
 		
 ////		ExtractService extracts = new ExtractService();
 ////		ResultRecord record = new ResultRecord();
