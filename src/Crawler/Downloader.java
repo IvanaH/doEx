@@ -21,7 +21,9 @@ class Downloader {
      */
     static String randomFileName(){
     	UUID uuid = UUID.randomUUID();
-        return uuid.toString();
+    	
+    	String addr = "./"+uuid.toString()+".txt";
+        return addr;
     }
     
     
@@ -56,12 +58,10 @@ class Downloader {
     	boolean flag = false;
     	String html = null;
     	String line = null;
-    	String addr = null;
     	
     	//1:http/https  2:ftp
-    	int i = valid(url);
+//    	int i = valid(url);
     	
-    	addr = "./"+randomFileName();
     	
     	try{
     		URL u = new URL(url);
@@ -75,8 +75,11 @@ class Downloader {
 			while((line = br.readLine())!=null)
 				html = html + line;
 			
-			FileWriter fw = new FileWriter(addr);
+			// TODO - create file when it doesn't exist
+			FileWriter fw = new FileWriter(savepath);
 			fw.write(html+"\r\n");
+			
+			fw.close();
 				
     	}catch(FileNotFoundException exc1){
     		System.out.println(exc1);

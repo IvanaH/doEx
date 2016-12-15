@@ -25,7 +25,7 @@ public class URLGenerator {
     }
 
     /**
-     * 将url添加到带抓取的列表
+     * 将url添加到待抓取的列表
      */
     boolean enqueue(String url){
     	boolean result = false;
