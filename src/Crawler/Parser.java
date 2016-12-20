@@ -3,13 +3,18 @@ package Crawler;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 /**
  * Created by hoyt on 2016/12/11.
  */
 public class Parser {
+	URLGenerator urlGenerator;
 
 
     /**
@@ -17,10 +22,23 @@ public class Parser {
      * @param file
      */
     void parse(File file){
-    	try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)),"UTF-8"))){
+    	try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file),"UTF-8"))){
+    		String line = null;
+    		String s = null;
     		
-    	}
-    	FileReader fr = new FileReader(file);
+    		if((line = br.readLine())!= null)
+    			s = s+line;
+    		
+    		if(s == null)
+    			System.out.println( file.getName()+" is null.");
+    		else
+    			parse(s);
+    		
+    	}catch (FileNotFoundException exc1) {
+			exc1.printStackTrace();
+		}catch (IOException exc2) {
+			exc2.printStackTrace();
+		}
     	
     }
 
@@ -29,6 +47,13 @@ public class Parser {
      * @param content
      */
     void parse(String content){
+    	String reg = "(http|https)://.*";
+    	Pattern p = Pattern.compile(reg);
+    	Matcher m = p.matcher(content);
+    	
+    	while(m.find()){
+    		getGenerator().enqueue(m.group());
+    	}
     	
     }
 
@@ -37,6 +62,7 @@ public class Parser {
      * @param generator
      */
     void setGenerator(URLGenerator generator){
+    	this.urlGenerator = generator;
     	
     }
 
@@ -45,6 +71,7 @@ public class Parser {
      * @return 
      */
     URLGenerator getGenerator(){
+    	return urlGenerator;
     	
     }
 }
