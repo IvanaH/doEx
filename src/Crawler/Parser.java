@@ -47,7 +47,7 @@ public class Parser {
      * @param content
      */
     void parse(String content){
-    	String reg = "(http|https)://.*";
+    	String reg = "(http|https)://daily.zhihu.com/story/.*";
     	Pattern p = Pattern.compile(reg);
     	Matcher m = p.matcher(content);
     	

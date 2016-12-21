@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class URLGenerator {
 	
-	ArrayList<String> urls = new ArrayList<>();
+	ArrayList<String> urls = new ArrayList<String>();;
 	int get = 0;
  
     /**
@@ -31,6 +31,14 @@ public class URLGenerator {
     	boolean result = false;
     	int i = 0;
     	
+    	if( urls.size() == 0){
+    		urls.add(url);
+    		
+    		System.out.println(urls.size());
+
+    		result = true;    		
+    	}
+    	
     	for(;i<urls.size();i++){
     		if (url.equals(urls.get(i))){
     			result = false;
@@ -38,7 +46,7 @@ public class URLGenerator {
     		}
     	}
     	
-    	if( i == urls.size()){
+    	if( urls.size() == 20 &&i == urls.size()){
     		urls.add(url);
     		result = true;
     	}

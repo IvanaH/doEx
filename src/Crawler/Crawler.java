@@ -7,9 +7,9 @@ import java.io.File;
  */
 public class Crawler {
 
-    URLGenerator urls;
-    Downloader downloader;
-    Parser parser;
+    URLGenerator urls = new URLGenerator();
+    Downloader downloader = new Downloader();
+    Parser parser = new Parser();
 
     public void start(String seed){
         urls.enqueue(seed);
@@ -21,10 +21,12 @@ public class Crawler {
             parser.parse(new File(randf));
             url = urls.next();
         }
+        
+        System.out.println("Done.");
     }
 
-    public void main(String[] args){
+    public static void main(String[] args){
         Crawler crawler = new Crawler();
-        crawler.start("http://www.zhihu.com/");
+        crawler.start("http://daily.zhihu.com");
     }
 }
