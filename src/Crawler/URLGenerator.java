@@ -16,7 +16,9 @@ public class URLGenerator {
      */
     String next(){
     	String url = null;
-    	if(urls.get(get)!= null){
+    	
+//    	if(urls.get(get)!=null){    //why outOfIndex occurred.
+    	if(get < urls.size()){
     		url = urls.get(get);
     		get ++;
     	}
@@ -34,6 +36,8 @@ public class URLGenerator {
     	if( urls.size() == 0){
     		urls.add(url);
     		
+    		System.out.println(url);
+    		
     		System.out.println(urls.size());
 
     		result = true;    		
@@ -42,11 +46,12 @@ public class URLGenerator {
     	for(;i<urls.size();i++){
     		if (url.equals(urls.get(i))){
     			result = false;
-    			break;
+    			return result;
     		}
     	}
     	
-    	if( urls.size() == 20 &&i == urls.size()){
+    	if( urls.size() < 20){
+    		System.out.println(url);
     		urls.add(url);
     		result = true;
     	}

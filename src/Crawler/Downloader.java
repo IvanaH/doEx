@@ -22,7 +22,7 @@ class Downloader {
     static String randomFileName(){
     	UUID uuid = UUID.randomUUID();
     	
-    	String addr = "./"+uuid.toString()+".txt";
+    	String addr = "src/Crawler/"+uuid.toString()+".txt";
         return addr;
     }
     
@@ -80,6 +80,8 @@ class Downloader {
 			fw.write(html+"\r\n");
 			
 			fw.close();
+			
+			flag = true;
 				
     	}catch(FileNotFoundException exc1){
     		System.out.println(exc1);

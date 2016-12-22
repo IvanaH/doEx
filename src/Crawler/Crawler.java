@@ -2,6 +2,7 @@ package Crawler;
 
 import java.io.File;
 
+
 /**
  * Created by hoyt on 2016/12/11.
  */
@@ -10,6 +11,7 @@ public class Crawler {
     URLGenerator urls = new URLGenerator();
     Downloader downloader = new Downloader();
     Parser parser = new Parser();
+    boolean download;
 
     public void start(String seed){
         urls.enqueue(seed);
@@ -17,16 +19,22 @@ public class Crawler {
         String url = urls.next();
         while(url!=null){
             String randf = Downloader.randomFileName();
-            downloader.fetch(url, randf);
-            parser.parse(new File(randf));
+            download = downloader.fetch(url, randf);
+            if (download){
+            	System.out.println(randf);
+            	parser.parse(new File(randf));
+            }
             url = urls.next();
         }
+        
+        for(int i = 0; i< urls.urls.size(); i++)
+        	System.out.println(urls.urls.get(i));
         
         System.out.println("Done.");
     }
 
     public static void main(String[] args){
         Crawler crawler = new Crawler();
-        crawler.start("http://daily.zhihu.com");
+        crawler.start("http://daily.zhihu.com/");
     }
 }

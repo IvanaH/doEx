@@ -47,12 +47,21 @@ public class Parser {
      * @param content
      */
     void parse(String content){
-    	String reg = "(http|https)://daily.zhihu.com/story/.*";
-    	Pattern p = Pattern.compile(reg);
+    	String reg1 = "href=\"(http://daily.zhihu.com/.*?)\"";
+    	String reg2 = "href=\"(/story/.+?)\"";
+    	Pattern p = Pattern.compile(reg1);
     	Matcher m = p.matcher(content);
     	
     	while(m.find()){
-    		getGenerator().enqueue(m.group());
+    		getGenerator().enqueue(m.group(1));
+    	}
+    	
+    	p = Pattern.compile(reg2);
+    	m = p.matcher(content);
+    	
+    	while(m.find()){
+//    		System.out.println("http://daily.zhihu.com"+m.group(1));
+    		getGenerator().enqueue("http://daily.zhihu.com"+m.group(1));
     	}
     	
     }
