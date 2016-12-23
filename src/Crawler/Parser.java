@@ -48,7 +48,7 @@ public class Parser {
      */
     void parse(String content){
     	String reg1 = "href=\"(http://daily.zhihu.com/.*?)\"";
-    	String reg2 = "href=\"(/story/.+?)\"";
+    	String reg2 = "href=\"(/story/\\d+)";
     	Pattern p = Pattern.compile(reg1);
     	Matcher m = p.matcher(content);
     	

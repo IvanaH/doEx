@@ -27,8 +27,8 @@ public class Crawler {
             url = urls.next();
         }
         
-        for(int i = 0; i< urls.urls.size(); i++)
-        	System.out.println(urls.urls.get(i));
+//        for(int i = 0; i< urls.urls.size(); i++)
+//        	System.out.println(urls.urls.get(i));
         
         System.out.println("Done.");
     }

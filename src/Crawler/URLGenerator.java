@@ -50,7 +50,7 @@ public class URLGenerator {
     		}
     	}
     	
-    	if( urls.size() < 20){
+    	if( urls.size() < 50){
     		System.out.println(url);
     		urls.add(url);
     		result = true;
